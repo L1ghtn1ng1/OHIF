@@ -79,6 +79,11 @@ module.exports = (env, argv) => {
         // Hoisted Yarn Workspace Modules
         path.resolve(__dirname, '../../../node_modules'),
         SRC_DIR,
+        path.resolve(__dirname, 'C:/Users/arnav/Documents/OHIF/extensions/export-zip/node_modules'),
+        path.resolve(__dirname, 'C:/Users/arnav/Documents/OHIF/modes/zip-export-mode/node_modules'),
+        path.resolve(__dirname, 'extensions/export-zip/node_modules'),
+        path.resolve(__dirname, 'extensions/export-zip/node_modules'),
+        path.resolve(__dirname, 'modes/zip-export-mode/node_modules'),
       ],
     },
     plugins: [
@@ -138,15 +143,15 @@ module.exports = (env, argv) => {
       ...(IS_COVERAGE
         ? []
         : [
-          new InjectManifest({
-            swDest: 'sw.js',
-            swSrc: path.join(SRC_DIR, 'service-worker.js'),
-            // Need to exclude the theme as it is updated independently
-            exclude: [/theme/],
-            // Cache large files for the manifests to avoid warning messages
-            maximumFileSizeToCacheInBytes: 1024 * 1024 * 50,
-          }),
-        ]),
+            new InjectManifest({
+              swDest: 'sw.js',
+              swSrc: path.join(SRC_DIR, 'service-worker.js'),
+              // Need to exclude the theme as it is updated independently
+              exclude: [/theme/],
+              // Cache large files for the manifests to avoid warning messages
+              maximumFileSizeToCacheInBytes: 1024 * 1024 * 50,
+            }),
+          ]),
     ],
     // https://webpack.js.org/configuration/dev-server/
     devServer: {
